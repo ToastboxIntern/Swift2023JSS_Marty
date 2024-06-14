@@ -1,7 +1,7 @@
 # Swift2023JSS_Marty
 A prototype app made to help foreign workers in Singapore assimilate socially and linguistically into SG, a project for Swift Explorers 2023
 
-If you want to check my coding ability, please head to the file "Quiz" folder, which is at Marty>Learning>Quiz (I tried), OR The "Flashcard" folder 
+If you want to check my coding ability, please head to the file "The Quiz" folder, which is at Marty>Learning>The Quiz, OR The "Flashcard" folder 
 
 Prototype Idea Features:
 
