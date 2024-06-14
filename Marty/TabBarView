@@ -1,1 +1,71 @@
+import SwiftUI 
+import ExplorersApp
+
+struct TabBarView: View {
+    
+    var body: some View {
+        ZStack {
+            
+            Color(red:255/255, green:128/255, blue:129/255)
+            HStack(spacing:80) {
+                Button {
+                    AppData.shared.currentView=1
+                } label:{ VStack(spacing: 5){
+                    Image(systemName:"keyboard.fill").resizable().scaledToFit().foregroundColor(.white).frame(height:50)
+                    
+                    Text("Translate").foregroundColor(.white).font(.title3).bold()
+                }
+                }
+                
+                Button {
+                    AppData.shared.currentView=2
+                } label:{ VStack(spacing: 5){
+                    Image(systemName:"lanyardcard.fill").resizable().scaledToFit().foregroundColor(.white).frame(height:50)
+                    
+                    Text("Flashcards").foregroundColor(.white).font(.title3).bold()
+                }
+                }
+                
+                Button {
+                    AppData.shared.currentView=3
+                } label:{ VStack(spacing: 5){
+                    Image(systemName:"book.fill").resizable().scaledToFit().foregroundColor(.white).frame(height:50)
+                    
+                    Text("Learn").foregroundColor(.white).font(.title3).bold()
+                }
+                }
+                
+                Button {
+                    AppData.shared.currentView=4
+                } label:{ VStack(spacing: 5){
+                    Image(systemName:"heart.fill").resizable().scaledToFit().foregroundColor(.white).frame(height:50)
+                    
+                    Text("Saved").foregroundColor(.white).font(.title3).bold()
+                }
+                }
+                
+                Button {
+                    AppData.shared.currentView=5
+                } label:{ VStack(spacing: 5){
+                    Image(systemName:"phone.bubble.left.fill").resizable().scaledToFit().foregroundColor(.white).frame(height:50)
+                    
+                    Text("Chat").foregroundColor(.white).font(.title3).bold()
+                }
+                }
+                
+            }.padding()
+        }.frame(height: 50)
+        
+    }
+    
+}
+
+struct TabBar_Previews: PreviewProvider {
+    static var previews: some View {
+        ExplorersApp(.portrait){
+            
+            TabBarView()
+        }
+    }
+}
 
