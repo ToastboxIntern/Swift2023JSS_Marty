@@ -1,1 +1,56 @@
+import SwiftUI
+import ExplorersApp
+
+class AppData: ObservableObject {
+    @Published var currentView=1
+    @Published var FlashCards = [String]()
+    @Published var FlashCardMeanings = [String]()
+     @Published var Saved = [String]()
+     @Published var SavedMeanings = [String]()
+    
+    
+    static var shared=AppData()
+}
+
+struct ContentView: View {
+    @StateObject var appData = AppData.shared
+    var num = 0
+    var body: some View {
+        
+        switch appData.currentView{
+        case 1: TranslatorView()
+        case 2: FlashcardView()
+        case 3: LearnView()
+        case 4: SavedView()
+        case 5: ChatView()
+        case 6: FlashView()
+        case 7: WelcomeView()
+        case 8: EnglishView()
+        case 9: QuizingView()
+        case 10: EnglishingView(phrase: Phrase.allphrases[0])
+        case 12: CH()
+        case 13: E1(phrase: Phrase.allphrases[1])
+        case 14: E2(phrase: Phrase.allphrases[2])
+        case 15: GameView()
+        
+        
+        
+            
+        default : EmptyView()
+        }
+        
+        
+        
+    }
+    
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ExplorersApp(.portrait){
+            ContentView()
+        }
+        
+    }
+}         
 
