@@ -7,10 +7,10 @@ Prototype Idea Features:
 
 2.) Flashcard Creator
 
-3.) Premade Language Courses
+3.) Premade Language Courses (English Journey)
 
 4.) Quiz on the Courses
 
-5.) Cards that saves commonly used sentences
+5.) Cards that saves commonly used sentences (SavedView)
 
-6.) A social media with other foreign workers using the app
+6.) A social media with other foreign workers using the app 
