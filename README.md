@@ -1,6 +1,8 @@
 # Swift2023JSS_Marty
 A prototype app made to help foreign workers in Singapore assimilate socially and linguistically into SG, a project for Swift Explorers 2023
 
+If you want to check my coding ability, please head to Learning>Quiz (tried hard), OR The Flashcard function
+
 Prototype Idea Features:
 
 1.) Translator
