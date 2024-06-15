@@ -1,1 +1,20 @@
+import SwiftUI
+import ExplorersApp
+
+struct FlashView: View {
+    
+    var body: some View {
+        Text("Hello world")
+    }
+    
+}
+
+struct FlashView_Previews: PreviewProvider {
+    static var previews: some View {
+        ExplorersApp(.portrait){
+            FlashView()
+        }
+        
+    }
+}
 
