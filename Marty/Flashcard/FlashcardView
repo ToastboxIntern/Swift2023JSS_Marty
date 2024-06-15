@@ -1,1 +1,69 @@
+import SwiftUI
+import ExplorersApp
+
+
+struct FlashcardView: View {
+    
+    @StateObject var appData = AppData.shared
+    
+    var body: some View {
+        
+        
+        ZStack{
+            Color(red:255/255, green:128/255, blue:129/255)
+            Image("F").resizable().scaledToFit().offset(y:-55)
+            TabBarView().offset(y:480)
+            
+            VStack {
+                ScrollView{
+                    ForEach(0..<AppData.shared.FlashCards.count, id: \.self) { i in
+                        HStack{
+                            VStack{
+                                Text("Phrase: ").bold().font(.title3).offset(x:-150,y:-28)
+                                
+                                Text("Meaning: ").bold().font(.title3).offset(x:-150,y:30)
+                            }
+                            VStack(spacing:10){
+                                Group{
+                                    TextField("Enter Phrase", text: $appData.FlashCards[i] ).textFieldStyle(.roundedBorder).frame(width:300)
+                                    
+                                    TextField("Enter meaning", text: $appData.FlashCardMeanings[i] ).textFieldStyle(.roundedBorder).frame(width:300)
+                                    
+                                    
+                                    
+                                }.padding().offset(x:-130,y:20)
+                                
+                                Spacer(minLength: 30)
+                            }
+                        }.padding().frame(maxWidth:750)
+                            .background(in: RoundedRectangle(cornerRadius: 15))
+                        
+                        
+                        
+                    }
+                    
+                    
+                }.frame(height:650).offset(y:-40)
+                
+                Button{
+                    appData.FlashCards.append("")
+                    appData.FlashCardMeanings.append("")
+                }label:{
+                    Image(systemName:"plus.app.fill").resizable().scaledToFit().foregroundColor(.blue).frame(height:60)
+                } .offset(y:0)
+            }
+        }
+        
+        
+    }
+}
+struct FlashcardView_Previews: PreviewProvider {
+    static var previews: some View {
+        ExplorersApp(.portrait){
+            
+            FlashcardView()
+        }
+    }
+    
+}
 
