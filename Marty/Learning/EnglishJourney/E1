@@ -1,1 +1,46 @@
+import SwiftUI
+import ExplorersApp
+
+struct E1: View {
+    let phrase : Phrase
+    
+    @StateObject var appData = AppData.shared
+    
+    var body: some View {
+        ZStack{
+            Color(red:255/255, green:128/255, blue:129/255)
+            Image("E2").resizable().scaledToFit().offset(y:-55)
+            TabBarView().offset(y:480)
+            
+            Button(action: {
+                AppData.shared.currentView=14
+            }) {
+                Text("Next").font(.title).foregroundColor(.white).bold()
+            }.padding().background(Color(red:0/255, green:160/255, blue:253/255), in: RoundedRectangle(cornerRadius: 15)).controlSize(.large).offset(x: 330, y: 370)
+            
+            Button{
+                AppData.shared.currentView=3
+            } label: {
+                Text("Exit").font(.title).foregroundColor(.white).bold()
+            }.padding().background(Color(red:0/255, green:160/255, blue:253/255), in: RoundedRectangle(cornerRadius: 15)).controlSize(.large).offset(x: -330, y: 370)
+            
+            Text("Phrase:  " + phrase.phrasetext).font(.largeTitle).bold().offset(y:-140)
+            
+            Text("Meaning:  " + phrase.phrasemeaning).font(.largeTitle).bold().offset(y: 70)
+        }
+    }
+    
+    
+    
+    struct E1_Previews: PreviewProvider {
+        static var previews: some View {
+            ExplorersApp(.portrait){
+                E1(phrase: Phrase.allphrases[1])
+            }
+            
+        }
+    }
+    
+}
+
 
