@@ -1,1 +1,15 @@
+import Foundation
+
+struct Phrase {
+    let phrasetext: String
+    let phrasemeaning: String
+    
+    
+    static let allphrases: [Phrase] = [
+        Phrase(phrasetext: "Hi", phrasemeaning: "你好"),
+        Phrase(phrasetext: "Goodbye", phrasemeaning: "再见"),
+        Phrase(phrasetext: "toilet", phrasemeaning: "厕所")
+    ]
+}
+
 
