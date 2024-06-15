@@ -1,1 +1,26 @@
+import Foundation
+
+struct Question: Hashable {
+    let questionText: String
+    let possibleAnswers: [String]
+    let correctAnswerIndex: Int
+    
+    static let allQuestions: [Question] = [
+        Question(questionText: "'你好'的英文意思是什么？", possibleAnswers: ["hello","bread","goodbye","sky",], correctAnswerIndex: 0),
+        
+        Question(questionText: "'厕所'的英文意思是什么？", possibleAnswers: ["breakfast", "bird", "toilet", "monkey"], correctAnswerIndex: 2),
+        
+        Question(questionText: "'再见'的英文意思是什么", possibleAnswers: ["hello", "banana", "egg", "goodbye"], correctAnswerIndex: 3),
+        
+        Question(questionText: "'我迷路'的英文意思是什么", possibleAnswers: ["I'm happy","I'm lost","I'm confused","I'm sad"], correctAnswerIndex: 1),
+        
+        Question(questionText: "'哪里'的英文意思是什么", possibleAnswers: ["Why","What","How","Where"], correctAnswerIndex: 3),
+        
+        Question(questionText: "'谢谢'的英文意思是什么", possibleAnswers: ["No","Yes","Thanks","Your Welcome"], correctAnswerIndex: 2),
+        
+        Question(questionText: "'不客气'的英文意思是什么", possibleAnswers: ["No","Yes","Thanks","Your Welcome"], correctAnswerIndex: 3)
+        
+    ]
+}
+
 
