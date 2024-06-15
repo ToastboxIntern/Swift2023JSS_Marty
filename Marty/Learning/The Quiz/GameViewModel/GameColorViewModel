@@ -1,1 +1,7 @@
+import SwiftUI
+
+struct GameColor {
+    static let main = Color(red:255/255, green:128/255, blue:129/255)
+}
+
 
