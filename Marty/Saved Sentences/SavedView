@@ -1,1 +1,67 @@
+import SwiftUI
+import ExplorersApp
+
+struct SavedView: View {
+    
+    @StateObject var appData = AppData.shared
+    @State var text = ""
+    var body: some View {
+        
+        
+        ZStack{
+            Color(red:255/255, green:128/255, blue:129/255)
+            Image("S").resizable().scaledToFit().offset(y:-55)
+            TabBarView().offset(y:480)
+            
+            VStack {
+                ScrollView{
+                    ForEach(0..<AppData.shared.Saved.count , id: \.self) { i in
+                        HStack{
+                            VStack{
+                                Text("Phrase: ").bold().font(.title3).offset(x:-150,y:-28)
+                                
+                                Text("Meaning: ").bold().font(.title3).offset(x:-150,y:30)
+                                
+                            }
+                            VStack(spacing:10){
+                                Group{
+                                    TextField("Enter Phrase", text:$appData.Saved[i]).textFieldStyle(.roundedBorder).frame(width:300)
+                                    
+                                    TextField("Enter Meaning", text:$appData.SavedMeanings[i]).textFieldStyle(.roundedBorder).frame(width:300)
+                                    
+                                }.padding().offset(x:-130,y:20)
+                                
+                                Spacer(minLength: 30)
+                            }
+                        }.padding().frame(maxWidth:750)
+                            .background(in: RoundedRectangle(cornerRadius: 15))
+                        
+                        
+                        
+                    }
+                    
+                    
+                }.frame(height:650).offset(y:-40)
+                
+                Button{
+                    appData.Saved.append("")
+                    appData.SavedMeanings.append("")
+                }label:{
+                    Image(systemName:"plus.app.fill").resizable().scaledToFit().foregroundColor(.blue).frame(height:60)
+                } .offset(y:0)
+            }
+        }
+        
+        
+    }
+}
+
+struct SavedView_Previews: PreviewProvider {
+    static var previews: some View {
+        ExplorersApp(.portrait){
+            SavedView()
+        }
+        
+    }
+}
 
