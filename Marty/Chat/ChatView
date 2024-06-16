@@ -1,1 +1,45 @@
+import SwiftUI
+import ExplorersApp
+
+struct ChatView: View {
+    
+    var body: some View {
+        ZStack{
+            Color(red:255/255, green:128/255, blue:129/255)
+            Image("C").resizable().scaledToFit().offset(y:-55)
+            TabBarView().offset(y:480)  
+            
+            ScrollView{
+                
+                Button{
+                    AppData.shared.currentView=12  
+                }label :{
+                    Image("C1").resizable().scaledToFit().frame(width:700)
+                }
+                
+                Spacer(minLength:20) 
+                
+                Button{
+                    AppData.shared.currentView=12  
+                }label :{
+                    Image("C1").resizable().scaledToFit().frame(width:700)
+                    }
+                }.offset(y:0).frame(height:700)
+                
+            }
+            
+            
+        }
+        
+    }
+    
+    struct ChatView_Previews: PreviewProvider {
+        static var previews: some View {
+            ExplorersApp(.portrait){
+                
+                ChatView()
+            }
+        }
+    
+}
 
