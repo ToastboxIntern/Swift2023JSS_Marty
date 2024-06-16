@@ -1,1 +1,83 @@
+import SwiftUI
+import ExplorersApp
+
+struct ResultsView: View {
+    let viewModel: ResultsViewModel
+    
+    var body: some View {
+        ZStack {
+            GameColor.main.ignoresSafeArea()
+            
+            RoundedRectangle(cornerSize: CGSize(width: 15, height:15), style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/).fill(Color(red:72/255, green:160/255, blue:248/255)).frame(width:750, height: 200).offset(y:50)
+            VStack {
+                Group{
+                    Spacer()
+                    HStack {
+                        Text("Final Score: ")
+                        
+                        Text(viewModel.finalPercentText)
+                    }
+                    .font(.system(size:60))
+                    .padding()
+                    .foregroundColor(.black)
+                    .bold()
+                    HStack {
+                        Text("Letter Grade: ")
+                        Text(viewModel.letterGradeText)
+                    }.foregroundColor(.black)
+                        .bold()
+                    .padding()
+                   .font(.system(size:60))
+                } .background(Color(red:255/255, green:239/255, blue:134/255), in: RoundedRectangle(cornerRadius: 10)).controlSize(.large)
+                Spacer()
+                Group {
+                    HStack(spacing:100){
+                        Text(viewModel.correctSelectionText)
+                            .font(.system(size: 40))
+                        
+                        Text(viewModel.incorrectSelectionText)
+                            .font(.system(size: 40))
+                    }.bold()
+                    Text("Total time: \(viewModel.totalGameTimeText)").font(.system(size:40)).bold()
+                        .padding(10)
+                    
+                }.offset(y:-120).foregroundColor(.white)
+               
+                HStack{
+                    NavigationLink(
+                        destination: LearnView(),
+                        label: {
+                            BottomText(str: "End Quiz")
+                                .padding(.bottom).foregroundColor(.white)
+                            
+                        })
+                    
+                    NavigationLink(
+                        destination: GameView(),
+                        label: {
+                            BottomText(str: "Restart")
+                                .padding(.bottom).foregroundColor(.white)
+                            
+                        }) 
+                }.offset(y:100)
+                
+                
+                
+            }.offset(y: -220)
+            TabBarView().offset(y:490)
+        }
+        .navigationBarHidden(true)
+    }
+}
+
+
+struct ResultsView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            ExplorersApp(.portrait){
+                ResultsView(viewModel: ResultsViewModel(selectionCount: (3,1), gameStartTime: Date(), gameEndTime: Date()))
+            }
+        }
+    }
+}
 
