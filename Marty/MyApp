@@ -1,1 +1,15 @@
+import SwiftUI
+import ExplorersApp
+
+@main
+struct Quiz: App {
+    var body: some Scene {
+        WindowGroup {
+            ExplorersApp(.portrait){
+                ContentView()
+            }
+            
+        }
+    }
+}
 
