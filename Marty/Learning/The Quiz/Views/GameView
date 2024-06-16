@@ -1,1 +1,81 @@
+import SwiftUI
+import ExplorersApp
+
+struct GameView: View {
+    @StateObject var viewModel = GameViewModel()
+    
+    var body: some View {
+        ZStack {
+            GameColor.main.ignoresSafeArea()
+            
+            VStack {
+                Text(viewModel.progressText)
+                    .padding()
+                    .background(Color(red:255/255, green:239/255, blue:134/255), in: RoundedRectangle(cornerRadius: 10)).controlSize(.large)
+                    .offset(y:50)
+                    .font(.title)
+                    .bold()
+                Spacer()
+                Text(viewModel.questionText)
+                    .font(.largeTitle)
+                    .bold()
+                    .multilineTextAlignment(.center)
+                    .padding()
+                    .foregroundColor(.black)
+                .background(Color(red:255/255, green:239/255, blue:134/255), in: RoundedRectangle(cornerRadius: 10)).controlSize(.large)
+                Spacer()
+                Spacer()
+                HStack {
+                    ForEach(viewModel.answerIndices) { index in
+                        AnswerButton(text: viewModel.answerText(for: index)) {
+                            viewModel.makeSelectionForCurrentQuestion(at: index)
+                        }
+                        .background(viewModel.colorForButton(at: index))
+                        .disabled(viewModel.selectionWasMade)
+                    }
+                }.offset(y:-200).font(.title).bold()
+                if viewModel.selectionWasMade {
+                    Button(action: viewModel.advanceGameState,
+                           label: {
+                        BottomText(str: "Next")
+                    }).offset(y:-100).foregroundColor(.white)
+                }
+                TabBarView().offset(y:-10)
+            }.padding(.bottom)
+        }
+        .navigationBarHidden(true)
+        .background(resultsNavigationLink)
+    }
+    private var resultsNavigationLink: some View {
+        NavigationLink(
+            destination: ResultsView(viewModel: ResultsViewModel(selectionCount: viewModel.selectionCount, gameStartTime: viewModel.gameStartTime, gameEndTime: Date())),
+            isActive: .constant(viewModel.gameIsOver),
+            label: { EmptyView() })
+    }
+}
+
+struct AnswerButton: View {
+    let text: String
+    let onClick: () -> Void
+    var body: some View {
+        Button(action: {
+            onClick()
+        }) {
+            Text(text).foregroundColor(.white)
+        }
+        .padding()
+        .border(Color.blue, width: 4)
+    }
+}
+
+struct GameView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            ExplorersApp(.portrait){
+                GameView()
+            }
+            
+        }
+    }
+}
 
