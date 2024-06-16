@@ -1,1 +1,74 @@
+import SwiftUI
+import ExplorersApp
+
+struct QuizingView: View {
+    
+    
+    
+    @StateObject var appData = AppData.shared
+    
+    var body: some View {
+        ZStack{
+            Color(red:255/255, green:128/255, blue:129/255)
+            Image("E").resizable().scaledToFit().offset(y:-55)
+            TabBarView().offset(y:480)
+            
+            ScrollView{
+                
+                VStack(spacing:90){
+                    Button{
+                    } label: {
+                        Text("Greetings 3").font(.title).foregroundColor(.white).bold()
+                    }.padding().background(Color(red:255/255, green:128/255, blue:129/255), in: RoundedRectangle(cornerRadius: 15)).controlSize(.large)
+                    
+                    Button{
+                        AppData.shared.currentView=7
+                    } label: {
+                        Text("Travel Phrases 1 Quiz").font(.title).foregroundColor(.black).bold()
+                    }.padding().background(Color(red:255/255, green:239/255, blue:134/255), in: RoundedRectangle(cornerRadius: 15)).controlSize(.large)
+                    
+                    Button{
+                    } label: {
+                        Text("Travel Phrases 2 Quiz").font(.title).foregroundColor(.white).bold()
+                    }.padding().background(Color(red:255/255, green:139/255, blue:134/255), in: RoundedRectangle(cornerRadius: 15)).controlSize(.large)
+                    
+                    Button{
+                    } label: {
+                        Text("Countries 1 Quiz").font(.title).foregroundColor(.white).bold()
+                    }.padding().background(Color(red:255/255, green:139/255, blue:134/255), in: RoundedRectangle(cornerRadius: 15)).controlSize(.large)
+                    
+                    Button{
+                    } label: {
+                        Text("Countries 2 Quiz").font(.title).foregroundColor(.white).bold()
+                    }.padding().background(Color(red:255/255, green:139/255, blue:134/255), in: RoundedRectangle(cornerRadius: 15)).controlSize(.large)
+                    
+                    Button{
+                    } label: {
+                        Text("Food 1 Quiz").font(.title).foregroundColor(.white).bold()
+                    }.padding().background(Color(red:255/255, green:139/255, blue:134/255), in: RoundedRectangle(cornerRadius: 15)).controlSize(.large)
+                    
+                    Button{
+                    } label: {
+                        Text("Food 2 QUiz").font(.title).foregroundColor(.white).bold()
+                    }.padding().background(Color(red:255/255, green:139/255, blue:134/255), in: RoundedRectangle(cornerRadius: 15)).controlSize(.large)
+                    
+                }
+            }.frame(height:650).offset(y:-100)
+            
+        }
+        
+    } 
+    
+    
+}
+
+struct QuizingView_Previews: PreviewProvider {
+    static var previews: some View {
+        ExplorersApp(.portrait){
+            QuizingView()
+        }
+        
+    }
+}
+
 
