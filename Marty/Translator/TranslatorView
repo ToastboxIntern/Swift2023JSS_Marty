@@ -1,1 +1,38 @@
+import SwiftUI
+import ExplorersApp
+
+struct TranslatorView: View {
+
+    @State var textFieldText : String = ""
+    @State var meaning : String = "面包好吃"
+    
+    var body: some View {
+        ZStack{
+            Color(red:255/255, green:128/255, blue:129/255)
+            Image("T").resizable().scaledToFit().offset(y:-55)
+            TabBarView().offset(y:480)  
+           
+            VStack{ 
+                TextField("Type phrase to translate here", text: $textFieldText).offset(x:55, y:-365).font(.title).foregroundColor(.gray)
+                
+                if textFieldText == "Bread is delicious" {
+                    Text(meaning).offset(x:-265, y:70).font(.title).foregroundColor(.white)
+                }
+                
+                
+                
+            }
+        }
+    }
+    
+}
+
+struct TranslatorView_Previews: PreviewProvider {
+    static var previews: some View {
+        ExplorersApp(.portrait){
+            TranslatorView()
+        }
+    }
+    
+}
 
