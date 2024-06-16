@@ -1,1 +1,50 @@
+import SwiftUI
+import ExplorersApp
+
+struct WelcomeView: View {
+    var body: some View {
+    
+        NavigationStack {
+            ZStack {
+                GameColor.main.ignoresSafeArea()
+                TabBarView().offset(y:480)
+                VStack {
+                    Text("Quiz 25: Travel Phrases")
+                        .font(.system(size: 60))
+                        .foregroundColor(Color.black)
+                        .bold()
+                        .background(Color(red:255/255, green:239/255, blue:134/255), in: RoundedRectangle(cornerRadius: 10)).controlSize(.large)
+                        .padding(.top)
+                        
+                    Text("Select the correct answer to each of the following questions.")
+                        .font(.system(size:60))
+                        .padding()
+                        .background(Color(red:255/255, green:239/255, blue:134/255), in: RoundedRectangle(cornerRadius: 10)).controlSize(.large)
+                        .padding(10)
+                        .foregroundColor(.black)
+                        .frame(width:750)
+                        .offset(y:200)
+                       
+                    Spacer()
+                    NavigationLink(
+                        destination: GameView(),
+                        label: {
+                            BottomText(str: "Let's Go!")
+                                .padding(.bottom).foregroundColor(.white).font(.system(size:60))
+                        }).offset(y:-170)
+                }
+            }
+        }
+    }
+}
+
+struct WelcomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        ExplorersApp(.portrait){
+WelcomeView()            
+        }
+            
+        
+    }
+}
 
