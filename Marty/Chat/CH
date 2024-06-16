@@ -1,1 +1,105 @@
+import SwiftUI
+import ExplorersApp
+
+struct CH: View {
+    
+    @State private var messageText = ""
+    @State var messages: [String] = ["Welcome to this community!"]
+    
+    var body: some View {
+        ZStack{
+            Color(red:255/255, green:128/255, blue:129/255)
+            Image("CH").resizable().scaledToFit().offset(y:-55)
+            TabBarView().offset(y:480)  
+            
+            VStack{
+                ScrollView {
+                    ForEach(messages, id: \.self) { message in
+                        // If the message contains [USER], that means it's us
+                        if message.contains("[USER]") {
+                            let newMessage = message.replacingOccurrences(of: "[USER]", with: "")
+                            
+                            // User message styles
+                            HStack {
+                                Spacer()
+                                Text(newMessage)
+                                    .padding()
+                                    .foregroundColor(Color.white)
+                                    .background(Color.blue.opacity(0.8))
+                                    .cornerRadius(10)
+                                    .padding(.horizontal, 16)
+                                    .padding(.bottom, 10)
+                                    
+                            }
+                        } else {
+                            
+                            // Bot message styles
+                            HStack {
+                                Text(message)
+                                    .padding()
+                                    .background(Color(red:225/255, green:254/255, blue:196/255))
+                                    .cornerRadius(10)
+                                    .padding(.horizontal, 16)
+                                    .padding(.bottom, 10)
+                                Spacer()
+                            }
+                        }
+                        
+                    }.rotationEffect(.degrees(180))
+                }
+                .rotationEffect(.degrees(180))
+                .background(Color.gray.opacity(0.1))
+                
+                
+                // Contains the Message bar
+                HStack {
+                    TextField("Type something", text: $messageText)
+                        .padding()
+                        .background(Color(red:225/255, green:254/255, blue:196/255))
+                        .cornerRadius(10)
+                        .onSubmit {
+                            sendMessage(message: messageText)
+                        }
+                    
+                    Button {
+                        sendMessage(message: messageText)
+                    } label: {
+                        Image(systemName: "paperplane.fill")
+                    }
+                    .font(.system(size: 26))
+                    .padding(.horizontal, 10)
+                }
+                .padding()
+            }.frame(width: 750, height: 650).offset(y:-15)
+        }
+        
+            }
+   
+    func sendMessage(message: String) {
+        withAnimation {
+            messages.append("[USER]" + message)
+            self.messageText = ""
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                withAnimation {
+                    messages.append(getBotResponse(message: message))
+                }
+            }
+        }
+    }
+
+
+        }
+    
+    
+
+
+struct CH_Previews: PreviewProvider {
+    static var previews: some View {
+        ExplorersApp(.portrait){
+            
+            CH()
+        }
+    }
+}
 
